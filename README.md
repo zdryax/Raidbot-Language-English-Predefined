@@ -2,59 +2,59 @@
 
 ### Commands:
 
-**Clear All**
+1. **Clear All**
 
 - Deletes all messages from a single channel.
 
-**Reset Channel**
+2. **Reset Channel**
 
 - Resets a channel, deleting all messages sent within it but preserving role settings and the channel name.
 
-**Reset Server**
+3. **Reset Server**
 
 - Resets ALL channels on the server, deleting all messages sent within them but preserving role settings and the channel name.
 
-**Spam**
+4. **Spam**
 
 - Spams all channels.
 
-**Raid**
+5. **Raid**
 
 - Creates a custom number of channels.
 
-**Nuke**
+6. **Nuke**
 
 - Deletes all channels on the server.
 
-**CN**
+7. **CN**
 
 - Creates a new server name.
 
-**CR**
+8. **CR**
 
 - Creates a number of roles on the server.
 
-**CI <Attach an image>**
+9. **CI <Attach an image>**
 
 - Creates a new server picture.
 
-**Ret**
+10. **Ret**
 
 - Raises the server by creating an absurd number of channels with custom spam names and messages.
 
-**BN**
+11. **BN**
 
 - Bans all server members except bots with admin privileges.
 
-**DR**
+12. **DR**
 
 - Deletes all server roles except those with admin privileges.
 
-**HLP**
+13. **HLP**
 
 - Displays this command help panel, the one you're seeing right now.
 
-**Ping**
+14. **Ping**
 
 - Displays the bot's latency.
 
