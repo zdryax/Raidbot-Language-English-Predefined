@@ -60,6 +60,10 @@
 
 - Displays the bot's latency.
 
+15. **KS**
+
+- Program 4 commands that will be executed as soon as you put the bot on the server, you must remember that you have to put the $ks command on a server where the bot is so that it works and then put the bot on the server that you will raid.
+
 ## Creator :
 **Zydrex**
 
